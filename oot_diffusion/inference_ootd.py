@@ -111,7 +111,7 @@ class OOTDiffusion:
 
     def __call__(
         self,
-        category="lowerbody",
+        category="upperbody",
         image_garm=None,
         image_vton=None,
         mask=None,
