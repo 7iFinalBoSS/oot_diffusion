@@ -46,6 +46,7 @@ def generate_image():
       steps=10,
       cfg=2.0,
       num_samples=2,
+      category = "upperbody",
     )
 
   return generated_images, mask_image
