@@ -71,7 +71,7 @@ class OOTDiffusionModel:
         if hg_root is None:
             hg_root = DEFAULT_HG_ROOT
 
-        category = "upperbody"
+        category = "lowerbody"
 
         if isinstance(cloth_path, Image.Image):
             cloth_image = cloth_path

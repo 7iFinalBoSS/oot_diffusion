@@ -73,7 +73,7 @@ class ClothesMaskModel:
         if hg_root is None:
             hg_root = DEFAULT_HG_ROOT
 
-        category = "upperbody"
+        category = "lowerbody"
 
         if isinstance(model_path, Image.Image):
             model_image = model_path
