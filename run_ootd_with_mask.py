@@ -21,6 +21,7 @@ if __name__ == "__main__":
     parser.add_argument("--hg_root", type=str, default=str(DEFAULT_HG_ROOT))
     parser.add_argument("--cache_dir", type=str, required=False)
     parser.add_argument("--output_path", type=str, default="./output_img")
+    parser.add_argument("--category", type=str, default="upperbody")
 
     args = parser.parse_args()
 
@@ -54,12 +55,14 @@ if __name__ == "__main__":
     model_image = Image.open(args.person_path)
     garment_image = Image.open(args.cloth_path)
     person_mask_image = Image.open(args.person_mask_path)
+    category = str(args.category)
 
     start_generate_time = time.perf_counter()
     result_images = model.generate(
         model_path=model_image,
         cloth_path=garment_image,
         model_mask_path=person_mask_image,
+        category= category,
     )
     end_generate_time = time.perf_counter()
     print(f"Generated in {end_generate_time - start_generate_time:.2f} seconds.")

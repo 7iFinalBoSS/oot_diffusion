@@ -55,12 +55,14 @@ class ClothesMaskModel:
     def generate(
         self,
         model_path: str | bytes | Path | Image.Image,
+        category: str,
     ):
         return self.generate_static(
             model_path=model_path,
             human_parsing_model=self.human_parsing_model,
             pose_model=self.pose_model,
             hg_root=self.hg_root,
+            category= category,
         )
 
     @staticmethod
@@ -69,7 +71,7 @@ class ClothesMaskModel:
         human_parsing_model: BodyParsingModel,
         pose_model: PoseModel,
         hg_root: str = None,
-        category: str = "upperbody",
+        category: str = None,
     ):
         if hg_root is None:
             hg_root = DEFAULT_HG_ROOT

@@ -15,6 +15,7 @@ if __name__ == "__main__":
     parser.add_argument("--hg_root", type=str, default=str(DEFAULT_HG_ROOT))
     parser.add_argument("--cache_dir", type=str, required=False)
     parser.add_argument("--output_path", type=str, default="./output_img")
+    parser.add_argument("--category", type=str, default="upperbody")
 
     args = parser.parse_args()
 
@@ -27,13 +28,15 @@ if __name__ == "__main__":
             f"Using default hg_root to store models path {DEFAULT_HG_ROOT}. Use --hg_root to specify a different path."
         )
 
+    category = str(args.category)
+
     cmm = ClothesMaskModel(
         hg_root=args.hg_root,
         cache_dir=args.cache_dir,
     )
 
     (masked_vton_img, mask, model_image, model_parse, face_mask) = cmm.generate(
-        model_path=args.person_path
+        model_path=args.person_path, category= category
     )
 
     # Save files
