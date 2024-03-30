@@ -5,6 +5,7 @@ from pathlib import Path
 from oot_diffusion.inference_segmentation import ClothesMaskModel
 from .inference_ootd import OOTDiffusion
 from .ootd_utils import resize_crop_center
+from typing import Union
 
 
 DEFAULT_HG_ROOT = Path(os.getcwd()) / "oodt_models"
@@ -37,8 +38,8 @@ class OOTDiffusionModel:
 
     def generate(
         self,
-        cloth_path: str | bytes | Path | Image.Image,
-        model_path: str | bytes | Path | Image.Image,
+        cloth_path: Union[str, bytes, Path ,Image.Image],
+        model_path: Union[str, bytes, Path ,Image.Image],
         seed: int = 0,
         steps: int = 10,
         cfg: float = 2.0,
@@ -60,8 +61,8 @@ class OOTDiffusionModel:
     def generate_static(
         pipe: OOTDiffusion,
         cmm: ClothesMaskModel,
-        cloth_path: str | bytes | Path | Image.Image,
-        model_path: str | bytes | Path | Image.Image,
+        cloth_path: Union[str, bytes, Path ,Image.Image],
+        model_path: Union[str, bytes, Path ,Image.Image],
         hg_root: str = None,
         seed: int = 0,
         steps: int = 10,

@@ -7,7 +7,7 @@ import torch
 from oot_diffusion.humanparsing.inference import BodyParsingModel
 from oot_diffusion.ootd_utils import get_mask_location, resize_crop_center
 from oot_diffusion.openpose.inference import PoseModel
-
+from typing import Union
 
 _category_get_mask_input = {
     "upperbody": "upper_body",
@@ -54,7 +54,7 @@ class ClothesMaskModel:
 
     def generate(
         self,
-        model_path: str | bytes | Path | Image.Image,
+        model_path: Union[str, bytes, Path, Image.Image],
     ):
         return self.generate_static(
             model_path=model_path,
@@ -65,7 +65,7 @@ class ClothesMaskModel:
 
     @staticmethod
     def generate_static(
-        model_path: str | bytes | Path | Image.Image,
+        model_path: Union[str, bytes, Path, Image.Image],
         human_parsing_model: BodyParsingModel,
         pose_model: PoseModel,
         hg_root: str = None,

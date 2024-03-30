@@ -13,6 +13,8 @@ from transformers import (
     CLIPVisionModelWithProjection,
 )
 
+from typing import Union
+
 from . import pipelines_ootd
 
 #! Necessary for OotdPipeline.from_pretrained

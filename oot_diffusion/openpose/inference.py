@@ -1,6 +1,6 @@
 from ultralytics import YOLO, settings
 from PIL import Image
-
+from typing import Union
 
 class PoseModel:
     def __init__(self, hg_root: str, cache_dir: str = None):
@@ -11,7 +11,7 @@ class PoseModel:
     def load_pose_model(self):
         self.pose_model = YOLO("yolov8n-pose.pt")
 
-    def infer_keypoints(self, image: str | bytes | Image.Image):
+    def infer_keypoints(self, image: Union[str, bytes ,Image.Image]):
         pose_results = self.pose_model(
             image,
         )

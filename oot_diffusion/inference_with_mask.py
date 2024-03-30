@@ -5,7 +5,7 @@ from huggingface_hub import snapshot_download
 
 from .inference_ootd import OOTDiffusion
 from .ootd_utils import resize_crop_center
-
+from typing import Union
 
 DEFAULT_HG_ROOT = Path(os.getcwd()) / "oodt_models"
 
@@ -46,9 +46,9 @@ class OOTDiffusionWithMaskModel:
 
     def generate(
         self,
-        cloth_path: str | bytes | Path | Image.Image,
-        model_path: str | bytes | Path | Image.Image,
-        model_mask_path: str | bytes | Path | Image.Image,
+        cloth_path: Union[str, bytes, Path, Image.Image],
+        model_path: Union[str, bytes, Path, Image.Image],
+        model_mask_path: Union[str, bytes, Path, Image.Image],
         seed: int = 0,
         steps: int = 10,
         cfg: float = 2.0,
@@ -69,9 +69,9 @@ class OOTDiffusionWithMaskModel:
     @staticmethod
     def generate_static(
         pipe: OOTDiffusion,
-        cloth_path: str | bytes | Path | Image.Image,
-        model_path: str | bytes | Path | Image.Image,
-        model_mask_path: str | bytes | Path | Image.Image,
+        cloth_path: Union[str, bytes, Path, Image.Image],
+        model_path: Union[str, bytes, Path, Image.Image],
+        model_mask_path: Union[str, bytes, Path, Image.Image],
         hg_root: str = None,
         seed: int = 0,
         steps: int = 10,
